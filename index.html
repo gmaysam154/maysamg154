@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>غرفة الهروب: مغامرة رمضان الأخيرة 🌙</title>
+    <title>غرفة الهروب: طريق العيد 🌙</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,16 +12,20 @@
             text-align: center;
             padding: 20px;
             min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container {
             max-width: 850px;
-            margin: auto;
+            width: 95%;
             background: rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 30px;
             backdrop-filter: blur(15px);
             border: 3px solid #ffd700;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         .welcome-msg {
             background: rgba(255, 215, 0, 0.15);
@@ -33,6 +37,7 @@
             border: 1px dashed #ffd700;
         }
         h1 { color: #ffd700; text-shadow: 2px 2px 4px #000; font-size: 2.2rem; margin-top: 0; }
+        h2 { color: #ffd700; margin-bottom: 20px; }
         .stage { display: none; animation: slideIn 0.5s ease-out; }
         .active { display: block; }
         input {
@@ -60,8 +65,9 @@
         }
         button:hover { transform: translateY(-3px); background: #fff; }
         .timer { font-size: 1.6rem; color: #ffcece; font-weight: bold; margin: 15px 0; letter-spacing: 1px; }
-        .final-msg { font-size: 3.5rem; color: #ffd700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); font-weight: bold; }
+        .final-msg { font-size: 3.5rem; color: #ffd700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); font-weight: bold; margin: 20px 0; }
         @keyframes slideIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .puzzle-text { font-size: 1.1rem; margin: 10px 0; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -77,40 +83,48 @@
     <div id="timerDisplay" class="timer">الوقت المتبقي: 45:00</div>
 
     <div id="stage1" class="stage active">
-        <h2>📍 المرحلة الأولى: أحاجي الصيام</h2>
-        <p>1. ركن من الأركان، نترك فيه الطعام من الفجر للمغيب؟</p>
-        <p>2. ليلة هي خير من ألف شهر؟</p>
-        <p>3. ضيف يزورنا في العام مرة؟</p>
-        <p>4. وجبة السحر قبل الفجر؟</p>
-        <p style="color: #ffd700; font-size: 0.9rem;">(ملاحظة: الكود هو مجموع عدد حروف الجواب الأول + عدد حروف الجواب الثالث)</p>
-        <input type="number" id="ans1" placeholder="أدخل رقم الكود هنا">
+        <h2>📍 المرحلة الأولى: أحاجي الصيام المقفاة</h2>
+        <div class="puzzle-text">
+            <p>1. ركنٌ من الأركان، نتركُ فيه الطعامَ من الفجرِ للمغيب؟</p>
+            <p>2. ليلةٌ هي خيرٌ من ألفِ شهرٍ، تنزلُ فيها الملائكةُ بالقدرِ؟</p>
+            <p>3. ضيفٌ يزورُنا في العامِ مرة، أولهُ رحمةٌ وأوسطهُ مغفرة؟</p>
+            <p>4. وجبةٌ قبلَ الفجرِ فيها بركة، تقوي الجسمَ وتمنعُ في الصيامِ الحركة؟</p>
+        </div>
+        <p style="color: #ffd700; font-size: 0.9rem;">(ملاحظة: الكود هو مجموع عدد حروف الجواب الأول "صيام" + عدد حروف الجواب الثالث "رمضان")</p>
+        <input type="number" id="ans1" placeholder="أدخل رقم الكود المكون من خانة واحدة">
         <br><button onclick="checkStage1()">فتح القفل الأول 🔓</button>
     </div>
 
     <div id="stage2" class="stage">
         <h2>📍 المرحلة الثانية: إكمال الأحاديث</h2>
-        <p>1. "من <b>(قام)</b> ليلة القدر إيماناً واحتساباً.."</p>
-        <p>2. "كان النبي إذا دخل العشر.. شدّ <b>(المئزر)</b>"</p>
-        <p>3. "اللهم إنك عفو تحب <b>(العفو)</b> فاعفُ عني"</p>
-        <p style="color: #ffd700; font-size: 0.9rem;">كلمة السر: الحرف الأول من كل كلمة مفقودة (3 حروف)</p>
-        <input type="text" id="ans2" placeholder="أدخل كلمة السر">
-        <br><button onclick="checkStage2()">الانتقال للمرحلة الأخيرة 🔑</button>
+        <p>استخرج الكلمات المفقودة لتجد "كلمة السر":</p>
+        <div class="puzzle-text">
+            <p>1. "من <b>(........)</b> ليلة القدر إيماناً واحتساباً غُفر له ما تقدم من ذنبه"</p>
+            <p>2. "كان النبي ﷺ إذا دخل العشر الأواخر.. شدّ <b>(........)</b>"</p>
+            <p>3. "اللهم إنك عفو تحب <b>(........)</b> فاعفُ عني"</p>
+        </div>
+        <p style="color: #ffd700; font-size: 0.9rem;">كلمة السر: الحرف الأول من كل كلمة مفقودة بالترتيب (3 حروف)</p>
+        <input type="text" id="ans2" placeholder="أدخل كلمة السر هنا">
+        <br><button onclick="checkStage2()">التقدم للمرحلة الأخيرة 🔑</button>
     </div>
 
     <div id="stage3" class="stage">
-        <h2>📍 المرحلة الثالثة: سنن العيد</h2>
-        <p>أجب عن الأسئلة بدقة:</p>
-        <p>نأكل تمرات وتراً قبل الخروج لصلاة <input type="text" id="q3_1" placeholder="صلاة الـ..." style="width: 120px;"></p>
-        <p>ما هي الزكاة التي نخرجها قبل الصلاة؟ <input type="text" id="q3_2" placeholder="زكاة الـ..." style="width: 120px;"></p>
-        <p>من سنن العيد أن نذهب من طريق ونعود من <input type="text" id="q3_3" placeholder="طريق..." style="width: 120px;"></p>
-        <button onclick="checkStage3()">تحقق من السنن ✨</button>
+        <h2>📍 المرحلة الثالثة: سنن العيد وآدابه</h2>
+        <p>أجب عن الأسئلة بدقة لتفتح القفل النهائي:</p>
+        <div class="puzzle-text">
+            <p>1. يُسن أكل تمراتٍ وتراً قبل الخروج لصلاة <input type="text" id="q3_1" placeholder="اسم الصلاة" style="width: 120px;"></p>
+            <p>2. ما هي الزكاة التي يجب إخراجها قبل صلاة العيد؟ <input type="text" id="q3_2" placeholder="زكاة الـ..." style="width: 120px;"></p>
+            <p>3. من سنن الطريق في العيد أن نذهب من طريق ونعود من <input type="text" id="q3_3" placeholder="طريق..." style="width: 120px;"></p>
+        </div>
+        <button onclick="checkStage3()">تحقق من الإجابات ✨</button>
     </div>
 
     <div id="final" class="stage">
         <div class="final-msg">🎊 كل عام وأنتم بخير 🎊</div>
-        <p style="font-size: 1.4rem; margin-top: 20px;">تقبل الله طاعاتكم جميعاً</p>
-        <p>تم إنجاز المغامرة بنجاح!</p>
-        <button onclick="location.reload()">إعادة التحدي 🔄</button>
+        <p style="font-size: 1.5rem; margin-top: 20px;">تقبل الله طاعاتكم جميعاً يا أبطال الصف التاسع</p>
+        <p>لقد نجحتم في المهمة ببراعة!</p>
+        <p>مع تحيات المعلمة ميسم</p>
+        <button onclick="location.reload()">إعادة المغامرة 🔄</button>
     </div>
 </div>
 
@@ -125,7 +139,7 @@
         timerElem.innerHTML = `الوقت المتبقي: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         if (timeLeft <= 0) {
             clearInterval(countdown);
-            alert("انتهى الوقت! حاولوا مرة أخرى.");
+            alert("انتهى الوقت! حاولوا مرة أخرى مع المعلمة ميسم.");
         }
         timeLeft--;
     }, 1000);
@@ -133,20 +147,24 @@
     function checkStage1() {
         // صيام (4) + رمضان (5) = 9
         if (document.getElementById('ans1').value == "9") {
-            alert("صحيح! الكلمة المكتسبة: (كُل)");
+            alert("أحسنتم! الكلمة المكتسبة هي: (كُل)");
             document.getElementById('stage1').classList.remove('active');
             document.getElementById('stage2').classList.add('active');
-        } else { alert("الكود خاطئ! فكروا بكلمة (صيام) و (رمضان)"); }
+        } else {
+            alert("الكود خاطئ! تلميح: اجمع حروف كلمة الجواب الأول والثالث.");
+        }
     }
 
     function checkStage2() {
-        // قام، المئزر، العفو -> قمع
+        // قام، المئزر، العفو -> كلمة السر: قمع
         let val = document.getElementById('ans2').value.trim();
         if (val == "قمع") {
-            alert("رائع! الكلمات المكتسبة: (عام وأنتم)");
+            alert("إجابة صحيحة! الكلمات المكتسبة هي: (عام وأنتم)");
             document.getElementById('stage2').classList.remove('active');
             document.getElementById('stage3').classList.add('active');
-        } else { alert("كلمة السر غير صحيحة، ركزوا في الحرف الأول من كل فراغ."); }
+        } else {
+            alert("كلمة السر خاطئة! تذكروا الأحاديث: (قام، المئزر، العفو).");
+        }
     }
 
     function checkStage3() {
@@ -154,12 +172,15 @@
         let q2 = document.getElementById('q3_2').value.trim();
         let q3 = document.getElementById('q3_3').value.trim();
 
+        // فحص مرن للإجابات
         if (q1.includes("فطر") && q2.includes("فطر") && (q3.includes("آخر") || q3.includes("اخر"))) {
-            alert("مذهل! الكلمة المكتسبة: (بخير)");
+            alert("مذهل! الكلمة المكتسبة هي: (بخير)");
             document.getElementById('stage3').classList.remove('active');
             document.getElementById('final').classList.add('active');
             clearInterval(countdown);
-        } else { alert("تأكدوا من إجابات السنن (صلاة الفطر، زكاة الفطر، طريق آخر)"); }
+        } else {
+            alert("تأكدوا من الإجابات: (صلاة الفطر، زكاة الفطر، طريق آخر).");
+        }
     }
 </script>
 
